@@ -39,7 +39,7 @@ class Schema(ObjectBase):
         self.minLength            = self._get('minLength', int)
         self.pattern              = self._get('pattern', str)
         self.maxItems             = self._get('maxItems', int)
-        self.minItems             = self._get('minItmes', int)
+        self.minItems             = self._get('minItems', int)
         self.required             = self._get('required', list)
         self.enum                 = self._get('enum', list)
         self.type                 = self._get('type', str)
@@ -71,10 +71,6 @@ class Schema(ObjectBase):
         # self.exclusiveMaximum
 
         self._resolved_allOfs = False
-
-        if self.type == 'array' and self.items is None:
-            raise SpecError('{}: items is required when type is "array"'.format(
-                self.get_path()))
 
     def get_type(self):
         """
